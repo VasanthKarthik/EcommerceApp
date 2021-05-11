@@ -1,0 +1,106 @@
+<section class="container">
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+        <th scope="col" class="icon text-center">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItemList; let i = index">
+        <th scope="row" class="align-middle">
+          <img
+            src="{{
+              item.product.productImages[0]
+                ? item.product.productImages[0]
+                : 'assets/images/no-img.jpg'
+            }}"
+            class="img img-fluid"
+            width="100px"
+            height="100px"
+            alt=""
+          />
+        </th>
+        <td class="heading align-middle font-weight-normal">
+          {{ item.product.name }}
+        </td>
+        <td class="text text-color align-middle">
+          {{ item.product.discountPrice | currency }}
+        </td>
+        <td class="text align-middle">
+          <a (click)="decrement(i)"
+            ><i class="fa fa-minus text-muted px-3"></i></a
+          >{{ item.quantity }}
+          <a (click)="increment(i)"
+            ><i class="fa fa-plus text-muted px-3"></i
+          ></a>
+        </td>
+        <td class="text text-color align-middle font-weight-bold">
+          {{ item.quantity * item.product.discountPrice | currency }}
+        </td>
+        <td class="text align-middle text-center">
+          <a role="button" (click)="removeCartItem(i)"
+            ><i class="fa fa-times" aria-hidden="true"></i
+          ></a>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      *ngIf="cartItemList.length === 0"
+      class="text font-weight-bold text-center"
+    >
+      <td colspan="6">Cart is Empty!</td>
+    </tfoot>
+  </table>
+  <div class="d-flex float-right">
+    <button class="btn button-outline btn-block mx-2" (click)="goToProducts()">
+      Buy More
+    </button>
+    <button class="btn btn-block button-color mx-2" (click)="updateCart()">
+      Update Cart
+    </button>
+  </div>
+  <br />
+</section>
+<section class="container pt-5">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-sm-6">
+        <p class="heading">Cart Total:</p>
+        <p class="text">
+          <span class="text-left font-weight-bold">Total Amount:</span
+          ><span class="float-right text-color">{{ subTotal | currency }}</span>
+        </p>
+        <p class="text">
+          <span class="text-left font-weight-bold">Discount(Upto 35%):</span
+          ><span class="text-danger float-right"
+            >-{{ discountPrice | currency }}</span
+          >
+        </p>
+        <p class="text total">
+          <span class="text-left font-weight-bold">Shipping charge:</span
+          ><span class="float-right text-color">{{
+            shippingCharge | currency
+          }}</span>
+        </p>
+        <p class="text font-weight-bold">
+          <span class="text-left">Payable Amount:</span
+          ><span class="float-right text-color">{{
+            PayableAmount | currency
+          }}</span>
+        </p>
+      </div>
+      <div class="col-sm-6 d-flex align-items-center justify-content-center">
+        <button type="submit" class="btn button-color" (click)="checkOut()">
+          Procced to checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,188 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-sm-8">
+      <p class="heading">Billing Information</p>
+      <form
+        novalidate
+        [formGroup]="billingForm"
+        class="text"
+        (ngSubmit)="saveBillingInfo()"
+      >
+        <div class="d-flex">
+          <div class="form-group py-1">
+            <input
+              type="text"
+              class="form-control mx-1"
+              formControlName="firstName"
+              placeholder="First Name"
+            />
+            <i class="fa fa-user-o icon"></i>
+            <div
+              class="px-3"
+              *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"
+            >
+              <div class="text-danger" *ngIf="firstName.errors.required">
+                First Name is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group py-1">
+            <input
+              type="text"
+              class="form-control mx-1"
+              formControlName="lastName"
+              placeholder="Last Name"
+            />
+            <i class="fa fa-user-o icon"></i>
+            <div
+              class="px-3"
+              *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"
+            >
+              <div class="text-danger" *ngIf="lastName.errors.required">
+                Last Name is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="form-group py-1">
+            <input
+              type="email"
+              class="form-control mx-1"
+              formControlName="email"
+              placeholder="E-Mail"
+            />
+            <i class="fa fa-envelope-o icon"></i>
+            <div
+              class="px-3"
+              *ngIf="email.errors && (email.dirty || email.touched)"
+            >
+              <div class="text-danger" *ngIf="email.errors.required">
+                Email is required
+              </div>
+              <div class="text-danger" *ngIf="email.errors.email">
+                Email entered is not Valid
+              </div>
+            </div>
+          </div>
+          <div class="form-group py-1">
+            <input
+              type="text"
+              class="form-control mx-1"
+              formControlName="phoneNo"
+              placeholder="Phone No"
+              pattern="[0-9]+"
+              maxlength="10"
+            />
+            <i class="fa fa-phone icon"></i>
+            <div
+              class="px-3"
+              *ngIf="phoneNo.errors && (phoneNo.dirty || phoneNo.touched)"
+            >
+              <div class="text-danger" *ngIf="phoneNo.errors.required">
+                Phone Number is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mr-2 py-1">
+          <input
+            type="text"
+            formControlName="addressLine1"
+            placeholder="Address Line 1"
+            class="form-control mx-1"
+          />
+          <i class="fa fa-map-marker icon"></i>
+          <div
+            class="px-3"
+            *ngIf="
+              addressLine1.errors &&
+              (addressLine1.dirty || addressLine1.touched)
+            "
+          >
+            <div class="text-danger" *ngIf="addressLine1.errors.required">
+              Address is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group mr-2 py-1">
+          <input
+            type="text"
+            formControlName="addressLine2"
+            placeholder="Address Line 2 (optional)"
+            class="form-control mx-1"
+          />
+        </div>
+        <div class="form-group mr-2 py-1">
+          <input
+            type="text"
+            formControlName="city"
+            placeholder="City"
+            class="form-control mx-1"
+          />
+          <div class="px-3" *ngIf="city.errors && (city.dirty || city.touched)">
+            <div class="text-danger" *ngIf="city.errors.required">
+              City is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group mr-2 py-1">
+          <input
+            type="text"
+            formControlName="state"
+            placeholder="State"
+            class="form-control mx-1"
+          />
+          <div
+            class="px-3"
+            *ngIf="state.errors && (state.dirty || state.touched)"
+          >
+            <div class="text-danger" *ngIf="state.errors.required">
+              State is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group mr-2 py-1">
+          <input
+            type="text"
+            formControlName="country"
+            placeholder="Country"
+            class="form-control mx-1"
+          />
+          <div
+            class="px-3"
+            *ngIf="country.errors && (country.dirty || country.touched)"
+          >
+            <div class="text-danger" *ngIf="country.errors.required">
+              Country is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group mr-2 py-1">
+          <input
+            type="tel"
+            formControlName="pincode"
+            placeholder="Pincode"
+            class="form-control mx-1"
+            pattern="[0-9]+"
+            maxlength="6"
+          />
+          <div
+            class="px-3"
+            *ngIf="pincode.errors && (pincode.dirty || pincode.touched)"
+          >
+            <div class="text-danger" *ngIf="pincode.errors.required">
+              Pincode is required
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn button-color mt-3 mx-1">
+          Continue &nbsp;<i class="fa fa-arrow-right"></i>
+        </button>
+      </form>
+    </div>
+    <div class="col-sm-4 p-0 m-0">
+      <app-order-summary></app-order-summary>
+    </div>
+  </div>
+</div>

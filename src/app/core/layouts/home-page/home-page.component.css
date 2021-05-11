@@ -1,0 +1,69 @@
+.carousel-indicators li{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: lightgrey;
+}
+
+.carousel-indicators li.active{
+    background-color: #121935;
+}
+
+.carousel-item h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;    
+    line-height: 40px;
+}
+
+.carousel-item p {
+    font-family: 'Lato', 'sans-serif';
+    font-size: 12px;
+}
+
+.carousel-item button {
+    width: 160px;
+    font-size: 12px;
+}
+
+.carousel-item h2 span{
+    color: #25bd01;
+}
+
+.discount{
+    border: none;
+    background-color: #e9ecef;
+}
+
+.discount h2.heading{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;  
+}
+
+.discount button, .big-sale button{
+    font-family: 'Lato', sans-serif;
+    border-radius: 0%;
+}
+
+.service-img{
+    background-color: #25bd01;
+    border-radius: 5%;
+    width: 60px;
+    height: 60px;
+}
+
+.service-container{
+	display: grid;
+	align-self: center;
+}
+
+.service-heading{
+	font-family: 'Lato', sans-serif;
+	font-size: 1rem!important;
+	font-weight: bold;
+}
+
+.service-text{
+	font-size:.85rem!important;
+}
+
+

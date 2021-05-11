@@ -1,0 +1,138 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-sm-8">
+      <p class="heading">Card Information</p>
+      <form
+        novalidate
+        [formGroup]="ccForm"
+        (ngSubmit)="saveCardInfo()"
+        class="text"
+      >
+        <p class="text font-weight-bold">Select One</p>
+        <div class="form-group">
+          <label class="px-5">
+            <input
+              type="radio"
+              name="cardType"
+              formControlName="cardType"
+              class="form-control"
+              value="mastercard"
+              checked
+            />
+            <img src="assets/images/payment/mastercard.png" />
+          </label>
+          <label class="px-5">
+            <input
+              type="radio"
+              name="cardType"
+              formControlName="cardType"
+              value="visa"
+              class="form-control"
+            />
+            <img src="assets/images/payment/visa.png" />
+          </label>
+          <label class="px-5">
+            <input
+              type="radio"
+              name="cardType"
+              formControlName="cardType"
+              value="discover"
+              class="form-control"
+            />
+            <img src="assets/images/payment/discover.png" />
+          </label>
+          <label class="px-5">
+            <input
+              type="radio"
+              name="cardType"
+              formControlName="cardType"
+              value="amex"
+              class="form-control"
+            />
+            <img src="assets/images/payment/american-express.png" />
+          </label>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="cardHolderName"
+            formControlName="cardHolderName"
+            placeholder="Name on your Card"
+            class="form-control text"
+          />
+          <i class="fa fa-user-o icon"></i>
+          <div
+            class="px-1"
+            *ngIf="
+              cardHolderName.errors &&
+              (cardHolderName.dirty || cardHolderName.touched)
+            "
+          >
+            <div class="text-danger" *ngIf="cardHolderName.errors.required">
+              Card Holder Name is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            id="cc-number"
+            type="text"
+            name="ccNumber"
+            [formControl]="getCardNumberControl()"
+            [textMask]="{
+              mask: cardMaskFunction,
+              guide: false,
+              showMask: true
+            }"
+            class="form-control"
+            placeholder="Card Number"
+            minlength="13"
+          />
+          <i
+            class="fa icon"
+            [ngClass]="{
+              'fa-cc-visa': cardType.value === 'visa',
+              'fa-cc-mastercard': cardType.value === 'mastercard',
+              'fa-cc-amex': cardType.value === 'amex',
+              'fa-cc-discover': cardType.value === 'discover'
+            }"
+          ></i>
+          <div class="px-1" *ngIf="getCardNumberControl().dirty">
+            <p class="text-danger" *ngIf="getCardNumberControl().invalid">
+              Invalid Card Number!
+            </p>
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="form-group mr-1">
+            <input
+              id="cc-exp-date"
+              class="form-control"
+              type="text"
+              name="ccExpiryDate"
+              formControlName="ccExpiryDate"
+              placeholder="Expiry Date"
+            />
+            <i class="fa fa-calendar icon"></i>
+          </div>
+          <div class="form-group ml-1">
+            <input
+              id="cc-cvc"
+              class="form-control"
+              type="password"
+              name="ccCVV"
+              formControlName="ccCVV"
+              placeholder="CVV"
+              minlength="3"
+              maxlength="4"
+            /><i class="fa fa-credit-card icon"></i>
+          </div>
+        </div>
+        <button class="btn button-color float-right">Pay Now</button>
+      </form>
+    </div>
+    <div class="col-sm-4">
+      <app-order-summary></app-order-summary>
+    </div>
+  </div>
+</div>

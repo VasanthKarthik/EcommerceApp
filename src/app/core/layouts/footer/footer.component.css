@@ -1,0 +1,18 @@
+footer {
+  background-color: #121935;
+  color: white;
+}
+
+.heading {
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+}
+
+.text {
+  font-family: "Open Sans", sans-serif;
+}
+
+.logo-align {
+  display: flex;
+  justify-content: flex-end;
+}

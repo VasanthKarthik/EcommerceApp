@@ -1,0 +1,18 @@
+p.heading,
+p.total {
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.thead-light > tr > th {
+  background-color: lightgreen;
+}
+
+thead th.icon {
+  background-color: #25bd01 !important;
+  color: white;
+}
+
+.button-color {
+  margin-top: 0;
+}

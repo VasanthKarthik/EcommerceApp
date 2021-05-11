@@ -1,0 +1,16 @@
+p.heading{
+    font-family: 'Lato', sans-serif;
+    border-bottom: 1px solid #121935;
+}
+
+div.scroll{
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+}
+
+.total{
+    border-top: 1px solid #121935;
+    border-bottom: 1px solid #121935;
+}

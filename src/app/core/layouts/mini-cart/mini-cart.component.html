@@ -1,0 +1,71 @@
+<div class="container p-0 m-0">
+  <div class="mini-cart p-0">
+    <ul class="list-group">
+      <li
+        class="list-item d-flex"
+        *ngFor="let item of cartItems; let i = index"
+      >
+        <div class="container d-flex align-items-center m-0 p-0">
+          <img
+            src="{{
+              item.product.productImages[0]
+                ? item.product.productImages[0]
+                : 'assets/images/no-img.jpg'
+            }}"
+            alt="mini-cart-image"
+            width="80px"
+            class="img img-fluid py-1 px-2"
+          />
+          <p class="text font-weight-bold pl-1 mb-0">
+            {{ item.product.name }}<br /><span
+              class="text text-color font-weight-bold"
+              >{{ item.product.discountPrice | currency }}</span
+            >
+          </p>
+          <a
+            role="button"
+            (click)="removeCartItem(i)"
+            class="pl-2 m-0 float-right"
+            ><span class="fa fa-times"></span
+          ></a>
+        </div>
+      </li>
+      <li
+        class="list-item text-center align-middle"
+        *ngIf="cartItems.length === 0"
+      >
+        <p class="text font-weight-bold pt-3">Cart is Empty!</p>
+      </li>
+    </ul>
+    <div class="container p-3">
+      <div class="d-flex justify-content-between">
+        <a
+          role="button"
+          [ngStyle]="{
+          'cursor': cartItems.length === 0 ? 'not-allowed' : 'pointer',
+          'opacity':  cartItems.length === 0 ? .65 : 1
+        }"
+          aria-disabled="cartItems.length === 0"
+          class="text-muted float-left"
+          (click)="removeAllCartItems()"
+          ><i class="fa fa-trash"></i> Clean Cart</a
+        >
+        <p class="text font-weight-bold text-right">
+          Sub-Total: <span class="text-color">{{ subTotal | currency }}</span>
+        </p>
+      </div>
+      <div class="py-1 d-flex justify-content-between">
+        <button
+          class="btn button-outline"
+          [disabled]="cartItems.length === 0"
+          (click)="goToCart()"
+        >
+          View Cart
+        </button>
+        <button class="btn button-color" [disabled]="cartItems.length === 0" (click)="checkOut()">
+          Check Out
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

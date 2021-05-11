@@ -1,0 +1,25 @@
+<section class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="progressbar text">
+        <li class="active">
+          Billing <br />
+          Information
+        </li>
+        <li>
+          Card <br />
+          Information
+        </li>
+        <li>
+          Success <br />
+          Message
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <router-outlet (deactivate)="progressBar($event)"></router-outlet>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+button.btn.button-color {
+  font-family: "Lato", sans-serif;
+  border-radius: 0%;
+  width: 200px;
+}
+
+.d-flex > .form-group {
+  width: 100%;
+  margin-right: 8px;
+}
+
+.d-flex > .form-group .icon,
+.form-group > i.icon {
+  right: 8px;
+}

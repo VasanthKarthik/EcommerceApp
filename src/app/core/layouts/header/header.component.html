@@ -1,0 +1,106 @@
+<header>
+  <div class="container-fluid">
+    <div id="lang-header" class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2 text">
+        <form novalidate>
+          <select name="languages" id="languages">
+            <option class="dropdown-item" value="english">English</option>
+            <option class="dropdown-item" value="spanish">Spanish</option>
+          </select>
+          |
+          <select name="currency" id="currency">
+            <option class="dropdown-item" value="usd">USD</option>
+            <option class="dropdown-item" value="inr">INR</option>
+          </select>
+        </form>
+      </div>
+      <div class="col-sm-8"></div>
+    </div>
+    <div id="profile" class="row py-4">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-5">
+        <img src="/assets/images/logo.png" alt="Logo" width="160px" />
+      </div>
+      <div class="col-sm-4 p-4 d-flex align-items-center">
+        <i class="fa fa-user-circle p-2" aria-hidden="true"></i>
+        &nbsp;
+        <p class="text m-0 pr-3">
+          Hello!<br />
+          <a href="" *ngIf="!isLoggedIn" (click)="goToLogin()">
+            Login / Signup</a
+          >
+          <span class="dropdown" *ngIf="isLoggedIn">
+            <a
+              href=""
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Your account</a
+            >
+            <span class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item pr-2" href="" (click)="logout()"
+                >logout
+                <i
+                  class="fa fa-sign-out icon float-right p-1"
+                  aria-hidden="true"
+                ></i
+              ></a>
+            </span>
+          </span>
+        </p>
+        <a
+          id="mini-cart"
+          role="button"
+          popoverClass="custom-popup"
+          [ngbPopover]="popContent"
+          placement="bottom"
+        >
+          <i class="fa fa-shopping-cart p-2 cart" aria-hidden="true">
+            <span class="badge badge-light cart-notification">{{
+              noOfCartItems
+            }}</span>
+          </i></a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/home']"
+              ><i class="fa fa-home"></i> Home</a
+            >
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/categories']"
+              ><i class="fa fa-shopping-cart"></i> Products</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href=""
+              ><i class="fa fa-info-circle"></i> About</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<ng-template #popContent>
+  <app-mini-cart></app-mini-cart>
+</ng-template>

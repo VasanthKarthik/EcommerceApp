@@ -1,0 +1,72 @@
+<section class="container p-0 m-0">
+  <form
+    novalidate
+    [formGroup]="searchForm"
+    (ngSubmit)="searchProduct()"
+    class="form-inline justify-content-end"
+  >
+    <input
+      type="text"
+      formControlName="searchText"
+      placeholder="Search"
+      class="form-control w-200 mx-3"
+    />
+    <button type="submit" class="btn button-color mx-3">
+      <i class="fa fa-search"></i> Search
+    </button>
+  </form>
+  <div class="row py-5 p-0 m-0">
+    <div class="col-sm-4 pb-4" *ngFor="let product of foodList">
+      <div class="card" role="link" (click)="goToPreview(product)">
+        <div class="container position-relative">
+          <img
+            class="card-img-top"
+            src="{{
+              product.productImages[0]
+                ? product.productImages[0]
+                : 'assets/images/no-img.jpg'
+            }}"
+            alt="Card image cap"
+            width="260px"
+            height="165px"
+          />
+          <div class="overlay"></div>
+        </div>
+        <div class="card-body">
+          <h5 class="heading">{{ product.name }}</h5>
+          <p class="text">{{ product.productType }}</p>
+          <div class="pb-3 d-flex align-items-center justify-content-between">
+            <ngb-rating
+              [max]="5"
+              class="float-left text-color"
+              [(rate)]="product.overAllRating"
+              [readonly]="true"
+            ></ngb-rating>
+            <p class="text text-right m-0">
+              <strong>{{ product.discountPrice | currency: usd }}</strong>
+            </p>
+          </div>
+          <div class="show-on-hover">
+            <button
+              type="submit"
+              [disabled]="product.stockAvailable === 0"
+              (click)="$event.stopPropagation(); addToCart(product)"
+              class="btn button-color"
+            >
+              Add to Cart
+            </button>
+            <a
+              href=""
+              class="float-right text-color"
+              (click)="goToPreview(product)"
+              ><i class="fa fa-eye" aria-hidden="true"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col sm-12" *ngIf="foodList.length === 0">
+      <p class="text text-center align-middle">No Products Found!</p>
+    </div>
+  </div>
+</section>

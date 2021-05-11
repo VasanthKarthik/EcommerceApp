@@ -1,0 +1,16 @@
+.border-right {
+  border-right: 1px solid gainsboro;
+}
+.text-description {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+}
+
+.feedback {
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  padding: 1rem 0 1rem 0;
+  word-wrap: break-word;
+  height: 175px;
+}

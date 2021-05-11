@@ -1,0 +1,35 @@
+.container{
+    width: 600px;
+}
+
+.success{
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border: 2px solid #25bd01;
+    border-radius: 50%;
+}
+
+.success::after{
+    content: '✓';
+    top: -30px;
+    left: 40px;
+    position: absolute;
+    text-align: center;
+    color: #25bd01;
+    font-size: 10rem;
+}
+
+h1.heading{
+    font-size: 2rem;
+}
+
+button.btn.button-color, .button-outline {
+  font-family: "Lato", sans-serif;
+  border-radius: 0%;
+  width: 200px;
+}
+
+button > i.fa-arrow-right{
+    color: #121935;
+}

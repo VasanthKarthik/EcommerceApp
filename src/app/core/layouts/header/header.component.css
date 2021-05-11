@@ -1,0 +1,91 @@
+#lang-header {
+  background-color: #25bd01;
+  color: white;
+}
+
+select {
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+#profile {
+  background-color: #121935;
+  color: white;
+}
+/* 
+#profile > div {
+    display: flex; 
+    align-self: center;
+} */
+
+#profile div > i {
+  font-size: 2.5rem;
+}
+
+#profile div > a {
+  font-size: 2.5rem;
+}
+
+.cart {
+  position: relative;
+}
+
+.cart-notification {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  border-radius: 50%;
+  border: 1px solid black;
+  font-size: 0.75rem;
+}
+
+header div.container > nav {
+  top: -30px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #25bd01 !important;
+}
+
+.custom-popup {
+  border: none;
+  background-color: transparent;
+  top: -30px !important;
+  left: -100px !important;
+}
+
+.custom-popup .arrow::before,
+.custom-popup .arrow::after {
+  border-style: none;
+}
+
+span.dropdown-menu {
+  margin-top: 12px;
+  left: -60px !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+span.dropdown-menu::after {
+  bottom: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: white;
+  border-width: 10px;
+  left: 82%;
+}

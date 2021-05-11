@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 border-right">
+      <div class="d-flex align-items-center justify-content-center">
+        <img
+          src="{{
+            product.productImages[0]
+              ? product.productImages[0]
+              : 'assets/images/no-img.jpg'
+          }}"
+          alt="Product Image"
+          width="200px"
+          class="img-fluid"
+        />
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <p class="badge badge-success" *ngIf="isStockAvailable">Stock Available</p>
+      <p class="badge badge-secondary" *ngIf="!isStockAvailable">Out of Stock</p>
+      <h4 class="heading">{{ product.name }}</h4>
+      <div class="text-left">
+        <ngb-rating
+          class="text-color"
+          [max]="5"
+          [(rate)]="product.overAllRating"
+          [readonly]="true"
+        ></ngb-rating>
+        <span class="text-muted">
+          ({{ product.reviews.length ? product.reviews.length : 0 }} Customer reviews)</span
+        >
+      </div>
+      <br />
+      <p class="text d-flex align-items-center">
+        price:
+        <span class="heading pl-4 pr-2 p-0 text-color">{{
+          product.discountPrice | currency
+        }}</span>
+        <s class="text-muted">{{ product.actualPrice | currency }}</s>
+      </p>
+      <p class="text text-description">
+        {{ product.description }}
+      </p>
+      <form
+        [formGroup]="quantityForm"
+        class="text px-3 d-flex align-items-center"
+      >
+        <a role="button" (click)="decrement()" style="cursor: pointer"
+          ><i class="fa fa-minus text-muted pr-3"></i
+        ></a>
+        <input
+          type="number"
+          formControlName="quantity"
+          value="{{ quantity.value }}"
+          hidden
+        />
+        <span class="text">{{ quantityForm.value.quantity }}</span>
+        <a role="button" (click)="increment()" style="cursor: pointer"
+          ><i class="fa fa-plus text-muted px-3"></i
+        ></a>
+        <span class="heading px-3 text-color">{{
+          quantityForm.value.quantity * product.discountPrice | currency
+        }}</span>
+      </form>
+      <button class="btn button-color btn-block" [disabled]="!isStockAvailable" (click)="addToCart(product)">
+        Add to Cart
+      </button>
+      <br />
+      <p class="mb-0">
+        <span class="text font-weight-bold px-2">Category:</span>
+        <span class="text-description">{{ product.productType }}</span>
+      </p>
+      <p>
+        <span class="text font-weight-bold px-2">Tag:</span>
+        <span class="text-description">{{ product.tags | space}}</span>
+      </p>
+    </div>
+  </div>
+</div>
+<!-- Review & Feedback -->
+<section class="container py-5">
+  <div class="row">
+    <div class="col-sm-6 pb-4" *ngFor="let review of product.reviews">
+      <div class="container row feedback d-flex">
+        <div class="col-sm-3">
+          <img
+            src="{{
+              review.profileImg
+                ? review.profileImg
+                : 'assets/images/profile.jpg'
+            }}"
+            alt="Discount"
+            class="img img-fluid rounded"
+            width="100px"
+          />
+        </div>
+        <div class="col-sm-9">
+          <div class="container">
+            <h5 class="heading font-weight-normal pb-0 mb-0">
+              {{ review.name }}
+            </h5>
+            <ngb-rating
+              class="text-color"
+              [max]="5"
+              [(rate)]="review.rating"
+              [readonly]="true"
+            ></ngb-rating>
+            <p
+              class="text-description pt-2"
+              placement="right"
+              ngbTooltip="{{
+                review.comment.length > 150 ? review.comment : ''
+              }}"
+            >
+              {{
+                review.comment.length > 150
+                  ? review.comment.slice(0, 150) + "..."
+                  : review.comment
+              }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

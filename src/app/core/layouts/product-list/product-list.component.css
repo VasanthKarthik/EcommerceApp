@@ -1,0 +1,61 @@
+div.card {
+  width: 260px;
+  height: 340px;
+}
+
+div.card > div.card-body {
+  position: relative;
+  top: 0px;
+  transition: top ease 0.25ms;
+}
+
+.text-color {
+  font-size: 1.25rem;
+}
+
+div.show-on-hover button {
+  border-radius: 50px;
+  font-family: "Lato", sans-serif;
+  font-size: 12px;
+}
+
+div.show-on-hover a:hover {
+  color: #25bd01;
+}
+
+div.card div.show-on-hover {
+  display: none;
+}
+
+div.card:hover div.show-on-hover {
+  display: block;
+}
+
+div.card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
+
+div.show-on-hover button:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+}
+
+div.card:hover .overlay {
+  opacity: 1;
+}
+
+div.card:hover > div.card-body {
+  background-color: white;
+  top: -40px;
+}

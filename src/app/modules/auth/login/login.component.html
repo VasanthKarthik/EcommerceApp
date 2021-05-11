@@ -1,0 +1,49 @@
+<div class="container d-flex justify-content-center py-5 my-5">
+  <div class="card p-4">
+    <div class="card-body text-center">
+      <h5 class="card-title heading m-2">LOGIN</h5>
+      <p class="card-text text">To manage your order please login first</p>
+      <br />
+      <form novalidate [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group">
+          <!-- <label for="userName" class="form-label">User Name or Email</label> -->
+          <input
+            type="text"
+            formControlName="userName"
+            placeholder="User Name or Email"
+            class="form-control text"
+          />
+          <i class="fa fa-user-o icon" aria-hidden="true"></i>
+          <div *ngIf="userName.errors && (userName.dirty || userName.touched)">
+            <div class="text-danger" *ngIf="userName.errors.required">
+              User Name is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+            class="form-control text"
+            minlength="8"
+          />
+          <i class="fa fa-lock icon" aria-hidden="true"></i>
+          <div *ngIf="password.errors && (password.dirty || password.touched)">
+            <div class="text-danger" *ngIf="password.errors.required">
+              Password is required
+            </div>
+            <div class="text-danger" *ngIf="password.errors.minlength">
+              Password contains atleast 8 characters
+            </div>
+          </div>
+        </div>
+        <p class="text-right text">
+          Don't have an account? <a href="" [routerLink]="['/signup']">Signup</a>
+        </p>
+        <br />
+        <button type="submit" class="btn btn-block button-color">LOGIN</button>
+      </form>
+    </div>
+  </div>
+</div>

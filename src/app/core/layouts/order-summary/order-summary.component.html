@@ -1,0 +1,49 @@
+<div class="jumbotron m-0 mb-5 py-5">
+  <p class="heading pb-1">Order Summary</p>
+  <div class="container scroll px-0 m-0">
+    <div
+      class="row d-flex align-items-center py-2"
+      *ngFor="let item of cartItems"
+    >
+      <div class="col-sm-4">
+        <img
+          src="{{
+            item.product.productImages[0]
+              ? item.product.productImages[0]
+              : 'assets/images/no-img.jpg'
+          }}"
+          width="80px"
+          alt="product Image"
+        />
+      </div>
+      <div class="col-sm-6">
+        <p class="text m-0">
+          {{ item.product.name }} <br />
+          <span class="text-muted">Quantity: </span>{{ item.quantity }} <br />
+          <span class="font-weight-bold">
+            <span class="text-muted">Price: </span>
+            {{ item.product.discountPrice | currency }}</span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container m-0 p-0">
+    <div class="total p-0 py-2 m-0 mt-5">
+      <p class="text font-weight-bold m-0">
+        <span class="text-left">Sub-Total: </span>
+        <span class="float-right text-color">{{ cartTotal | currency }}</span>
+      </p>
+      <p class="text font-weight-bold m-0">
+        <span class="text-left">Delivery Charge: </span>
+        <span class="float-right text-color">{{
+          deliveryCharge | currency
+        }}</span>
+      </p>
+    </div>
+    <p class="text font-weight-bold pt-2 m-0">
+      <span class="text-left">Total Amount: </span>
+      <span class="float-right text-color">{{ total | currency }}</span>
+    </p>
+  </div>
+</div>

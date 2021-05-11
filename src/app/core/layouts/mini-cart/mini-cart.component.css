@@ -1,0 +1,50 @@
+.mini-cart {
+  margin: 20px 0;
+  float: right;
+  background: white;
+  width: 320px;
+  position: relative;
+  border-radius: 3px;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mini-cart:after {
+  bottom: 100%;
+  left: 92%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: white;
+  border-width: 13px;
+  margin-left: -12px;
+}
+
+.float-right {
+  position: absolute;
+  right: 20px;
+}
+
+.list-group {
+  max-height: 300px;
+  overflow: auto;
+}
+
+a {
+  font-size: 1rem !important;
+  color: #121935;
+  cursor: pointer;
+}
+
+.list-item {
+  padding-bottom: 5px;
+  max-height: 80px;
+  border-bottom: 1px solid gainsboro;
+}
+
+button {
+  border-radius: 25px;
+}

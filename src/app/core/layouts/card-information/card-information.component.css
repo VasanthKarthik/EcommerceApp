@@ -1,0 +1,27 @@
+/* HIDE RADIO */
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+input[type="radio"] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+input[type="radio"]:checked + img {
+  border: 2px solid #33048a;
+}
+
+.d-flex > .form-group {
+  width: 100%;
+}
+
+button.btn.button-color {
+  font-family: "Lato", sans-serif;
+  border-radius: 0%;
+  width: 200px;
+}

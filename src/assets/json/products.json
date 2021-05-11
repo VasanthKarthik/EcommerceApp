@@ -1,0 +1,153 @@
+[
+  {
+    "id": 1,
+    "name": "Apple",
+    "description": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor.",
+    "productImages": [""],
+    "productType": "Fruits",
+    "overAllRating": 4,
+    "stockAvailable": 5,
+    "actualPrice": 10,
+    "discountPrice": 8.5,
+    "dicountPercentage": 15,
+    "specialOffer": "",
+    "tags": ["Apple", "Green Apple"],
+    "reviews": [
+      {
+        "name": "Andrew Russel",
+        "profileImg": "https://randomuser.me/api/portraits/men/24.jpg",
+        "rating": 4,
+        "comment": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor."
+      },
+      {
+        "name": "Percy Jackson",
+        "profileImg": "https://randomuser.me/api/portraits/men/43.jpg",
+        "rating": 4,
+        "comment": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Mixed Fruit",
+    "description": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor.",
+    "productImages": [""],
+    "productType": "Fruits",
+    "overAllRating": 4,
+    "stockAvailable": 5,
+    "actualPrice": 40,
+    "discountPrice": 36,
+    "dicountPercentage": 10,
+    "specialOffer": "",
+    "tags": ["Apple", "Pineapple", "Banana"],
+    "reviews": [
+      {
+        "name": "Amy",
+        "profileImg": "https://randomuser.me/api/portraits/women/26.jpg",
+        "rating": 5,
+        "comment": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor. Myfavourite"
+      },
+      {
+        "name": "Paul",
+        "profileImg": "https://randomuser.me/api/portraits/men/43.jpg",
+        "rating": 4,
+        "comment": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Carrot",
+    "description": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor.",
+    "productImages": [
+      "https://image.shutterstock.com/image-photo/fresh-carrot-cut-pieces-isolated-260nw-481776079.jpg",
+      "https://i.ndtvimg.com/mt/cooks/2014-11/carrots.jpg"
+    ],
+    "productType": "Vegetables",
+    "overAllRating": 4,
+    "stockAvailable": 5,
+    "actualPrice": 10,
+    "discountPrice": 8,
+    "dicountPercentage": 20,
+    "specialOffer": "",
+    "tags": ["Carrot"],
+    "reviews": [
+      {
+        "name": "Amy",
+        "profileImg": "https://randomuser.me/api/portraits/women/26.jpg",
+        "rating": 5,
+        "comment": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor. Myfavourite"
+      },
+      {
+        "name": "Paul",
+        "profileImg": "https://randomuser.me/api/portraits/men/43.jpg",
+        "rating": 4,
+        "comment": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Fresh Broyler Chicken",
+    "description": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor.",
+    "productImages": [""],
+    "productType": "Food",
+    "overAllRating": 4,
+    "stockAvailable": 5,
+    "actualPrice": 120,
+    "discountPrice": 96,
+    "dicountPercentage": 20,
+    "specialOffer": "",
+    "tags": ["Chicken", "Non-veg", "Meat"],
+    "reviews": [
+      {
+        "name": "Amy",
+        "profileImg": "https://randomuser.me/api/portraits/women/26.jpg",
+        "rating": 5,
+        "comment": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor. Myfavourite"
+      },
+      {
+        "name": "Paul",
+        "profileImg": "https://randomuser.me/api/portraits/men/43.jpg",
+        "rating": 4,
+        "comment": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor."
+      },
+      {
+        "name": "Amy",
+        "profileImg": "https://randomuser.me/api/portraits/women/26.jpg",
+        "rating": 5,
+        "comment": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor. Myfavourite Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor. Myfavourite"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Grapes",
+    "description": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor.",
+    "productImages": [
+      "https://img.etimg.com/thumb/width-1200,height-900,imgsize-89908,resizemode-1,msid-69367344/markets/commodities/news/indias-grape-exports-to-europe-surge-by-31.jpg"
+    ],
+    "productType": "Fruits",
+    "overAllRating": 4,
+    "stockAvailable": 0,
+    "actualPrice": 120,
+    "discountPrice": 96,
+    "dicountPercentage": 20,
+    "specialOffer": "",
+    "tags": ["Grapes", "Green Grapes"],
+    "reviews": [
+      {
+        "name": "Amy",
+        "profileImg": "https://randomuser.me/api/portraits/women/26.jpg",
+        "rating": 5,
+        "comment": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor. Myfavourite"
+      },
+      {
+        "name": "Paul",
+        "profileImg": "",
+        "rating": 4,
+        "comment": "Good for Health, Contains Vitamins, Fibres and Minerals, if we consume it daily, there is no need to visit doctor."
+      }
+    ]
+  }
+]

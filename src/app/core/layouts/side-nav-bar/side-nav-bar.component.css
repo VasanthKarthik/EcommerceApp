@@ -1,0 +1,15 @@
+div.col-sm-3 {
+    border-right: 1px solid gainsboro;
+}
+
+li.heading a {
+    border-bottom: 1px solid #25bd01;
+}
+
+.nav-link{
+    color: #121935;
+}
+
+.active, .nav-link:hover {
+    color: #25bd01;
+}
