@@ -84,8 +84,8 @@ export class CardInformationComponent implements OnInit {
       localStorage.setItem('li-active', JSON.stringify(3));
       this.activate.emit('li:second');
       this.notificationService.showSuccess(
-        'success',
-        'Payment Completed Successfully!'
+        'Payment Completed Successfully!',
+        'success'
       );
       this.cartService.removeAll();
       this.route.navigateByUrl('checkout/success-message');

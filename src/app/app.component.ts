@@ -35,4 +35,9 @@ export class AppComponent {
       this.route.navigateByUrl('login');
     }
   }
+
+  @HostListener('window:beforeunload',['$event'])
+  clearStorage(){
+    localStorage.clear();
+  }
 }

@@ -43,7 +43,7 @@ export class MiniCartComponent implements OnInit, OnDestroy {
     if (this.authenticationService.isLogin()) {
       this.route.navigateByUrl('/checkout');
     } else {
-      this.notificationService.showWarning('You need to login for Checkout', 'Warning');
+      this.notificationService.showWarning('You need to login for Checkout!', 'Warning');
     }
   }
 

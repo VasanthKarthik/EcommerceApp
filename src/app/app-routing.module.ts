@@ -1,5 +1,6 @@
 import { HostListener, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutUsComponent } from './core/layouts/about-us/about-us.component';
 import { BillingInformationComponent } from './core/layouts/billing-information/billing-information.component';
 import { CardInformationComponent } from './core/layouts/card-information/card-information.component';
 import { CheckoutComponent } from './core/layouts/checkout/checkout.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomePageComponent },
+  { path: 'about', component: AboutUsComponent },
   {
     path: 'categories',
     component: SideNavBarComponent,
@@ -66,4 +68,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

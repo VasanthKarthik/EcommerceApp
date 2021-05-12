@@ -15,6 +15,6 @@ export class CheckoutComponent implements OnInit {
       ? JSON.parse(localStorage.getItem('li-active'))
       : 0;
     let ele = $('.progressbar').find('li')[li - 1];
-    ele.setAttribute('class', 'active');
+    ele ? ele.setAttribute('class', 'active') : ele;
   }
 }

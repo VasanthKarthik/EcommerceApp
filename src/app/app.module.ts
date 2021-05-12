@@ -28,6 +28,7 @@ import { VegetableListComponent } from './core/layouts/vegetable-list/vegetable-
 import { FruitListComponent } from './core/layouts/fruit-list/fruit-list.component';
 import { FoodListComponent } from './core/layouts/food-list/food-list.component';
 import { TextMaskModule } from 'angular2-text-mask';
+import { AboutUsComponent } from './core/layouts/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { TextMaskModule } from 'angular2-text-mask';
     VegetableListComponent,
     FruitListComponent,
     FoodListComponent,
+      AboutUsComponent,
 
     SpacePipe,
   ],

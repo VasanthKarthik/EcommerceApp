@@ -22,5 +22,4 @@ export class HomePageComponent implements OnInit {
   goToShop(){
     this.route.navigateByUrl('categories/products')
   }
-
 }

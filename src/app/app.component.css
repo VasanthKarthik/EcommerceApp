@@ -1,8 +1,0 @@
-.row {
-    display: flex;
-}
-
-.bg-img {
-    background-image: url('/assets/images/strawberry.jpg');
-    background-size: cover;
-}

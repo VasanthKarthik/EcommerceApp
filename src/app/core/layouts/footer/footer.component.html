@@ -1,42 +1,64 @@
 <footer class="footer">
-    <div class="container-fluid px-5 pt-5 pb-0">
-        <div class="row py-5">
-            <div class="col-sm-3">
-                <h4 class="heading">About</h4>
-                <br>
-                <p class="text">Categories</p>
-                <p class="text">About</p>
-                <p class="text">Latest Products</p>
-            </div>
-            <div class="col-sm-3">
-                <h4 class="heading">Categories</h4>
-                <br>
-                <p class="text">Fruits & Drinks</p>
-                <p class="text">Vegetables</p>
-                <p class="text">Food</p>
-            </div>
-            <div class="col-sm-3">
-                <h4 class="heading">Our Company</h4>
-                <br>
-                <p class="text">Delivery</p>
-                <p class="text">Legal Notice</p>
-                <p class="text">Terms and Conditions of use</p>
-            </div>
-            <div class="col-sm-3">
-                <h4 class="heading">Download App</h4>
-                <br>
-                <a href="https://apps.apple.com/in/app/whatsapp-messenger/id310633997" target="_blank"><img src="/assets/images/apple-store.png" alt="Apple Store" width="200px"></a>
-                <a href="https://play.google.com/store/apps/details?id=com.whatsapp" target="_blank"><img src="/assets/images/play-store.png" alt="Play Store" width="200px"></a>
-            </div>
-        </div>
-        <br>
-        <div class="row" style="border-top: 1px solid white;">
-            <div class="col-sm-6 py-2 m-0 p-0">
-                <p class="text pt-4 m-0">&copy; Copyright 2021 by Vasanth Karthik</p>
-            </div>
-            <div class="col-sm-6  py-2 m-0 p-0 logo-align">
-                <img src="/assets/images/credit-card-logo.png" alt="Credit Card" width="300px">
-            </div>
-        </div>
+  <div class="container-fluid px-5 pt-5 pb-0">
+    <div class="row py-5">
+      <div class="col-sm-3">
+        <h4 class="heading">About</h4>
+        <br />
+        <p class="text"><a [routerLink]="['/categories']">Categories</a></p>
+        <p class="text"><a [routerLink]="['/about']">About</a></p>
+        <p class="text"><a [routerLink]="['/categories']">Latest Products</a></p>
+      </div>
+      <div class="col-sm-3">
+        <h4 class="heading">Categories</h4>
+        <br />
+        <p class="text"><a [routerLink]="['/categories', 'fruits']"
+          >Fruits & Drinks</a
+        ></p>
+        <p class="text"><a [routerLink]="['/categories', 'vegetables']"
+          >Vegetables</a
+        ></p>
+        <p class="text"><a [routerLink]="['/categories', 'food']">Food</a></p>
+      </div>
+      <div class="col-sm-3">
+        <h4 class="heading">Our Company</h4>
+        <br />
+        <p class="text">Delivery</p>
+        <p class="text">Legal Notice</p>
+        <p class="text">Terms and Conditions of use</p>
+      </div>
+      <div class="col-sm-3">
+        <h4 class="heading">Download App</h4>
+        <br />
+        <a
+          href="https://apps.apple.com/in/app/whatsapp-messenger/id310633997"
+          target="_blank"
+          ><img
+            src="assets/images/apple-store.png"
+            alt="Apple Store"
+            width="200px"
+        /></a>
+        <a
+          href="https://play.google.com/store/apps/details?id=com.whatsapp"
+          target="_blank"
+          ><img
+            src="assets/images/play-store.png"
+            alt="Play Store"
+            width="200px"
+        /></a>
+      </div>
     </div>
+    <br />
+    <div class="row" style="border-top: 1px solid white">
+      <div class="col-sm-6 py-2 m-0 p-0">
+        <p class="text pt-4 m-0">&copy; Copyright 2021 by Vasanth Karthik</p>
+      </div>
+      <div class="col-sm-6 py-2 m-0 p-0 logo-align">
+        <img
+          src="assets/images/credit-card-logo.png"
+          alt="Credit Card"
+          width="300px"
+        />
+      </div>
+    </div>
+  </div>
 </footer>
