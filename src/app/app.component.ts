@@ -36,8 +36,13 @@ export class AppComponent {
     }
   }
 
-  @HostListener('window:beforeunload',['$event'])
-  clearStorage(){
-    localStorage.clear();
+  @HostListener('window:beforeunload', ['$event'])
+  clearStorage() {
+    let event = localStorage.getItem('event');
+    if (event === 'login') {
+      return;
+    } else {
+      localStorage.clear();
+    }
   }
 }

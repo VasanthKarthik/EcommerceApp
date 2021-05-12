@@ -85,7 +85,7 @@ span.dropdown-menu::after {
   left: 82%;
 }
 
-p.text > a,
-span.dropdown > a {
+div#profile p.text > a,
+div#profile span.dropdown > a {
   color: white;
 }
