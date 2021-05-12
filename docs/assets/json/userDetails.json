@@ -1,0 +1,20 @@
+[
+  {
+    "fullName": "Vasanthanathan",
+    "userName": "Vasanth Karthik",
+    "email": "vk@grr.la",
+    "password": "Vasanth@10"
+  },
+  {
+    "fullName": "Manikandan",
+    "userName": "Mani",
+    "email": "mm@grr.la",
+    "password": "Mani@2750"
+  },
+  {
+    "fullName": "Balamurugan",
+    "userName": "Bala",
+    "email": "bm@grr.la",
+    "password": "Bala@1234"
+  }
+]
