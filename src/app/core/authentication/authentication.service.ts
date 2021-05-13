@@ -35,8 +35,12 @@ export class AuthenticationService {
                 item.email === userData.userName) &&
               item.password === userData.password
           );
-          localStorage.setItem(credentials, JSON.stringify(this.currentUser));
-          resolve(this.currentUser);
+          if (this.currentUser) {
+            localStorage.setItem(credentials, JSON.stringify(this.currentUser));
+            resolve(this.currentUser);
+          } else {
+            reject();
+          }
         })
         .catch((err) => {
           reject(err);

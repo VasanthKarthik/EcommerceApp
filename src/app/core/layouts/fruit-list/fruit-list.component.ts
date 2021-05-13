@@ -71,8 +71,8 @@ export class FruitListComponent implements OnInit, OnDestroy {
   searchProduct() {
     let searchtxt = this.searchForm.value.searchText;
     if (searchtxt) {
-      this.fruitList = this.fruitList.filter(
-        (i) => i.name.toLowerCase() === searchtxt.toLowerCase()
+      this.fruitList = this.fruitList.filter((i) =>
+        i.name.toLowerCase().includes(searchtxt.toLowerCase())
       );
     } else {
       this.fruitList = this.temp;

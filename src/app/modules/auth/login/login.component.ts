@@ -41,10 +41,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      this.authenticationService
-        .login(this.loginForm.value)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+      this.authenticationService.login(this.loginForm.value);
 
       setTimeout(() => this.afterLogin(), 500);
     }

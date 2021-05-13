@@ -71,8 +71,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   searchProduct() {
     let searchtxt = this.searchForm.value.searchText;
     if (searchtxt) {
-      this.products = this.products.filter(
-        (i) => i.name.toLowerCase() === searchtxt.toLowerCase()
+      this.products = this.products.filter((i) =>
+        i.name.toLowerCase().includes(searchtxt.toLowerCase())
       );
     } else {
       this.products = this.temp;

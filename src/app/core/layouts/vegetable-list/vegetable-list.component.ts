@@ -73,8 +73,8 @@ export class VegetableListComponent implements OnInit, OnDestroy {
   searchProduct() {
     let searchtxt = this.searchForm.value.searchText;
     if (searchtxt) {
-      this.vegetableList = this.vegetableList.filter(
-        (i) => i.name.toLowerCase() === searchtxt.toLowerCase()
+      this.vegetableList = this.vegetableList.filter((i) =>
+        i.name.toLowerCase().includes(searchtxt.toLowerCase())
       );
     } else {
       this.vegetableList = this.temp;
