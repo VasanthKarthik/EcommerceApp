@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
   userName: FormControl;
   email: FormControl;
   password: FormControl;
+  imageUrl = '.../../assets/images/strawberry.jpg';
 
   constructor(private route: Router, private notificationService: NotificationService) {
     this.createFormControl();

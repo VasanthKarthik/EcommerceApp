@@ -5,11 +5,12 @@ import { Subscription } from 'rxjs';
 import { IProduct } from 'src/app/shared/models/product.model';
 import { ProductService } from '../../http/product/product.service';
 import { CartService } from '../../services/cart.service';
+import { NotificationService } from '../../services/notificaion.service';
 
 @Component({
   selector: 'app-food-list',
   templateUrl: './food-list.component.html',
-  styleUrls: ['./food-list.component.css']
+  styleUrls: ['./food-list.component.css'],
 })
 export class FoodListComponent implements OnInit, OnDestroy {
   isVisible: boolean = false;
@@ -25,7 +26,8 @@ export class FoodListComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService,
     private route: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private notificationService: NotificationService
   ) {
     this.subscription = this.productService
       .getProducts()
@@ -54,6 +56,10 @@ export class FoodListComponent implements OnInit, OnDestroy {
 
   addToCart(product: IProduct) {
     this.cartService.addToCart(product, 1);
+    this.notificationService.showSuccess(
+      'Product added to cart Successfully.',
+      'Success'
+    );
   }
 
   goToPreview(product: IProduct) {
@@ -65,7 +71,9 @@ export class FoodListComponent implements OnInit, OnDestroy {
   searchProduct() {
     let searchtxt = this.searchForm.value.searchText;
     if (searchtxt) {
-      this.foodList = this.foodList.filter((i) => i.name === searchtxt);
+      this.foodList = this.foodList.filter(
+        (i) => i.name.toLowerCase() === searchtxt.toLowerCase()
+      );
     } else {
       this.foodList = this.temp;
     }
@@ -74,5 +82,4 @@ export class FoodListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   userName: FormControl;
   password: FormControl;
+  imageUrl = '.../../assets/images/strawberry.jpg';
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -44,18 +45,23 @@ export class LoginComponent implements OnInit {
         .login(this.loginForm.value)
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
-      if (this.authenticationService.isLogin()) {
-        localStorage.removeItem('event');
-        localStorage.setItem('isLoggedIn', JSON.stringify(true));
-        this.authenticationService.loginSubject.next(true);
-        this.notificationService.showSuccess('Login Successfully', 'Success');
-        this.route.navigateByUrl('');
-      } else {
-        this.notificationService.showError(
-          'Invalid User Name and Password',
-          'Error'
-        );
-      }
+
+      setTimeout(() => this.afterLogin(), 500);
+    }
+  }
+
+  afterLogin(): void {
+    if (this.authenticationService.isLogin()) {
+      localStorage.removeItem('event');
+      localStorage.setItem('isLoggedIn', JSON.stringify(true));
+      this.authenticationService.loginSubject.next(true);
+      this.notificationService.showSuccess('Login Successfully', 'Success');
+      this.route.navigateByUrl('');
+    } else {
+      this.notificationService.showError(
+        'Invalid User Name and Password',
+        'Error'
+      );
     }
   }
 

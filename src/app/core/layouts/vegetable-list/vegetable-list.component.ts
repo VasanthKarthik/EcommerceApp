@@ -5,11 +5,12 @@ import { Subscription } from 'rxjs';
 import { IProduct } from 'src/app/shared/models/product.model';
 import { ProductService } from '../../http/product/product.service';
 import { CartService } from '../../services/cart.service';
+import { NotificationService } from '../../services/notificaion.service';
 
 @Component({
   selector: 'app-vegetable-list',
   templateUrl: './vegetable-list.component.html',
-  styleUrls: ['./vegetable-list.component.css']
+  styleUrls: ['./vegetable-list.component.css'],
 })
 export class VegetableListComponent implements OnInit, OnDestroy {
   isVisible: boolean = false;
@@ -25,12 +26,15 @@ export class VegetableListComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService,
     private route: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private notificationService: NotificationService
   ) {
     this.subscription = this.productService
       .getProducts()
       .subscribe((response: IProduct[]) => {
-        this.vegetableList = response.filter((i) => i.productType === 'Vegetables');
+        this.vegetableList = response.filter(
+          (i) => i.productType === 'Vegetables'
+        );
         this.temp = this.vegetableList;
       });
 
@@ -54,6 +58,10 @@ export class VegetableListComponent implements OnInit, OnDestroy {
 
   addToCart(product: IProduct) {
     this.cartService.addToCart(product, 1);
+    this.notificationService.showSuccess(
+      'Product added to cart Successfully.',
+      'Success'
+    );
   }
 
   goToPreview(product: IProduct) {
@@ -65,7 +73,9 @@ export class VegetableListComponent implements OnInit, OnDestroy {
   searchProduct() {
     let searchtxt = this.searchForm.value.searchText;
     if (searchtxt) {
-      this.vegetableList = this.vegetableList.filter((i) => i.name === searchtxt);
+      this.vegetableList = this.vegetableList.filter(
+        (i) => i.name.toLowerCase() === searchtxt.toLowerCase()
+      );
     } else {
       this.vegetableList = this.temp;
     }

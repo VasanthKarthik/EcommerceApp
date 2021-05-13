@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { IProduct } from 'src/app/shared/models/product.model';
 import { ProductService } from '../../http/product/product.service';
 import { CartService } from '../../services/cart.service';
+import { NotificationService } from '../../services/notificaion.service';
 
 @Component({
   selector: 'app-product-list',
@@ -25,7 +26,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService,
     private route: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private notificationService: NotificationService
   ) {
     this.subscription = this.productService
       .getProducts()
@@ -54,6 +56,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   addToCart(product: IProduct) {
     this.cartService.addToCart(product, 1);
+    this.notificationService.showSuccess(
+      'Product added to cart Successfully.',
+      'Success'
+    );
   }
 
   goToPreview(product: IProduct) {
@@ -65,7 +71,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
   searchProduct() {
     let searchtxt = this.searchForm.value.searchText;
     if (searchtxt) {
-      this.products = this.products.filter((i) => i.name === searchtxt);
+      this.products = this.products.filter(
+        (i) => i.name.toLowerCase() === searchtxt.toLowerCase()
+      );
     } else {
       this.products = this.temp;
     }

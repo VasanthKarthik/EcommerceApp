@@ -5,11 +5,12 @@ import { Subscription } from 'rxjs';
 import { IProduct } from 'src/app/shared/models/product.model';
 import { ProductService } from '../../http/product/product.service';
 import { CartService } from '../../services/cart.service';
+import { NotificationService } from '../../services/notificaion.service';
 
 @Component({
   selector: 'app-fruit-list',
   templateUrl: './fruit-list.component.html',
-  styleUrls: ['./fruit-list.component.css']
+  styleUrls: ['./fruit-list.component.css'],
 })
 export class FruitListComponent implements OnInit, OnDestroy {
   isVisible: boolean = false;
@@ -25,7 +26,8 @@ export class FruitListComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductService,
     private route: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private notificationService: NotificationService
   ) {
     this.subscription = this.productService
       .getProducts()
@@ -54,6 +56,10 @@ export class FruitListComponent implements OnInit, OnDestroy {
 
   addToCart(product: IProduct) {
     this.cartService.addToCart(product, 1);
+    this.notificationService.showSuccess(
+      'Product added to cart Successfully.',
+      'Success'
+    );
   }
 
   goToPreview(product: IProduct) {
@@ -65,7 +71,9 @@ export class FruitListComponent implements OnInit, OnDestroy {
   searchProduct() {
     let searchtxt = this.searchForm.value.searchText;
     if (searchtxt) {
-      this.fruitList = this.fruitList.filter((i) => i.name === searchtxt);
+      this.fruitList = this.fruitList.filter(
+        (i) => i.name.toLowerCase() === searchtxt.toLowerCase()
+      );
     } else {
       this.fruitList = this.temp;
     }
@@ -74,5 +82,4 @@ export class FruitListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }
