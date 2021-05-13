@@ -14,7 +14,7 @@ export class SuccessMessageComponent implements OnInit {
   }
 
   backtoShopPage(){
-    this.route.navigateByUrl('categories/products');
+    this.route.navigateByUrl('home');
   }
 
 }

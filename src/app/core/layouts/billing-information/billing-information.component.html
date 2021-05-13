@@ -82,6 +82,9 @@
               <div class="text-danger" *ngIf="phoneNo.errors.required">
                 Phone Number is required
               </div>
+              <div class="text-danger" *ngIf="phoneNo.errors.pattern">
+                Phone Number contains 10 digits
+              </div>
             </div>
           </div>
         </div>
@@ -173,6 +176,9 @@
           >
             <div class="text-danger" *ngIf="pincode.errors.required">
               Pincode is required
+            </div>
+            <div class="text-danger" *ngIf="pincode.errors.pattern">
+              Pincode contains 6 digits
             </div>
           </div>
         </div>
