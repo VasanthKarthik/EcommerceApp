@@ -1015,7 +1015,9 @@ class AuthenticationService {
     constructor(http) {
         this.http = http;
         this.loginSubject = new rxjs__WEBPACK_IMPORTED_MODULE_0__["BehaviorSubject"](false);
+        this.userName = new rxjs__WEBPACK_IMPORTED_MODULE_0__["BehaviorSubject"]('');
         this.login$ = this.loginSubject.asObservable();
+        this.userName$ = this.userName.asObservable();
     }
     login(userData) {
         return new Promise((resolve, reject) => {
@@ -1035,6 +1037,7 @@ class AuthenticationService {
                     item.password === userData.password);
                 if (this.currentUser) {
                     sessionStorage.setItem(credentials, JSON.stringify(this.currentUser));
+                    this.userName.next(this.currentUser.userName);
                     resolve(this.currentUser);
                 }
                 else {
@@ -1817,7 +1820,7 @@ class SuccessMessageComponent {
     }
 }
 SuccessMessageComponent.ɵfac = function SuccessMessageComponent_Factory(t) { return new (t || SuccessMessageComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"])); };
-SuccessMessageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SuccessMessageComponent, selectors: [["app-success-message"]], decls: 17, vars: 0, consts: [[1, "container", "text-center", "mb-5", "p-5"], [1, "success", "mx-auto", "mt-3"], [1, "py-4"], [1, "heading"], [1, "text-color"], [1, "btn", "button-color", "mb-4", 3, "click"], [1, "text"], [1, "fa", "fa-arrow-right"]], template: function SuccessMessageComponent_Template(rf, ctx) { if (rf & 1) {
+SuccessMessageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SuccessMessageComponent, selectors: [["app-success-message"]], decls: 14, vars: 0, consts: [[1, "container", "text-center", "mb-5", "p-5"], [1, "success", "mx-auto", "mt-3"], [1, "py-4"], [1, "heading"], [1, "text-color"], [1, "btn", "button-color", "mb-4", 3, "click"]], template: function SuccessMessageComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
@@ -1838,10 +1841,6 @@ SuccessMessageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Back to Shop Page");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "a", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, " Download Voucher \u00A0");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "i", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } }, styles: [".container[_ngcontent-%COMP%]{\r\n    width: 600px;\r\n}\r\n\r\n.success[_ngcontent-%COMP%]{\r\n    width: 200px;\r\n    height: 200px;\r\n    position: relative;\r\n    border: 2px solid #25bd01;\r\n    border-radius: 50%;\r\n}\r\n\r\n.success[_ngcontent-%COMP%]::after{\r\n    content: '\u2713';\r\n    top: -30px;\r\n    left: 40px;\r\n    position: absolute;\r\n    text-align: center;\r\n    color: #25bd01;\r\n    font-size: 10rem;\r\n}\r\n\r\nh1.heading[_ngcontent-%COMP%]{\r\n    font-size: 2rem;\r\n}\r\n\r\nbutton.btn.button-color[_ngcontent-%COMP%], .button-outline[_ngcontent-%COMP%] {\r\n  font-family: \"Lato\", sans-serif;\r\n  border-radius: 0%;\r\n  width: 200px;\r\n}\r\n\r\nbutton[_ngcontent-%COMP%]    > i.fa-arrow-right[_ngcontent-%COMP%]{\r\n    color: #121935;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN1Y2Nlc3MtbWVzc2FnZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2Isa0JBQWtCO0lBQ2xCLHlCQUF5QjtJQUN6QixrQkFBa0I7QUFDdEI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osVUFBVTtJQUNWLFVBQVU7SUFDVixrQkFBa0I7SUFDbEIsa0JBQWtCO0lBQ2xCLGNBQWM7SUFDZCxnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSxlQUFlO0FBQ25COztBQUVBO0VBQ0UsK0JBQStCO0VBQy9CLGlCQUFpQjtFQUNqQixZQUFZO0FBQ2Q7O0FBRUE7SUFDSSxjQUFjO0FBQ2xCIiwiZmlsZSI6InN1Y2Nlc3MtbWVzc2FnZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lcntcclxuICAgIHdpZHRoOiA2MDBweDtcclxufVxyXG5cclxuLnN1Y2Nlc3N7XHJcbiAgICB3aWR0aDogMjAwcHg7XHJcbiAgICBoZWlnaHQ6IDIwMHB4O1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgYm9yZGVyOiAycHggc29saWQgIzI1YmQwMTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcclxufVxyXG5cclxuLnN1Y2Nlc3M6OmFmdGVye1xyXG4gICAgY29udGVudDogJ+Kckyc7XHJcbiAgICB0b3A6IC0zMHB4O1xyXG4gICAgbGVmdDogNDBweDtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGNvbG9yOiAjMjViZDAxO1xyXG4gICAgZm9udC1zaXplOiAxMHJlbTtcclxufVxyXG5cclxuaDEuaGVhZGluZ3tcclxuICAgIGZvbnQtc2l6ZTogMnJlbTtcclxufVxyXG5cclxuYnV0dG9uLmJ0bi5idXR0b24tY29sb3IsIC5idXR0b24tb3V0bGluZSB7XHJcbiAgZm9udC1mYW1pbHk6IFwiTGF0b1wiLCBzYW5zLXNlcmlmO1xyXG4gIGJvcmRlci1yYWRpdXM6IDAlO1xyXG4gIHdpZHRoOiAyMDBweDtcclxufVxyXG5cclxuYnV0dG9uID4gaS5mYS1hcnJvdy1yaWdodHtcclxuICAgIGNvbG9yOiAjMTIxOTM1O1xyXG59XHJcbiJdfQ== */"] });
 
@@ -1941,6 +1940,10 @@ class HeaderComponent {
         this.authSubscription = this.authService.login$.subscribe((value) => {
             this.isLoggedIn = value;
         });
+        this.authSubscription = this.authService.userName$.subscribe((value) => {
+            this.userName = value;
+            this.userName = this.userName.length <= 15 ? this.userName : this.userName.substr(0, 12) + '...';
+        });
     }
     ngOnInit() {
         this.cartSubscription = this.cartService.cartLength$.subscribe((value) => {
@@ -1949,10 +1952,6 @@ class HeaderComponent {
         this.noOfCartItems = JSON.parse(sessionStorage.getItem('cart-length'))
             ? JSON.parse(sessionStorage.getItem('cart-length'))
             : 0;
-        this.userName = JSON.parse(sessionStorage.getItem('current-user'))
-            ? JSON.parse(sessionStorage.getItem('current-user')).userName
-            : '';
-        this.userName = this.userName.length <= 15 ? this.userName : this.userName.substr(0, 12) + '...';
     }
     showPopOver() {
         this.isPopupVisible = !this.isPopupVisible;
@@ -3697,7 +3696,6 @@ const routes = [
                 path: 'food',
                 component: _core_layouts_food_list_food_list_component__WEBPACK_IMPORTED_MODULE_5__["FoodListComponent"],
             },
-            { path: '**', component: _core_layouts_product_list_product_list_component__WEBPACK_IMPORTED_MODULE_11__["ProductListComponent"] },
         ],
     },
     { path: 'shopping-cart', component: _core_layouts_shopping_cart_shopping_cart_component__WEBPACK_IMPORTED_MODULE_12__["ShoppingCartComponent"] },

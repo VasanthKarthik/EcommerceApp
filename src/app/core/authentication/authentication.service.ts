@@ -11,8 +11,10 @@ const credentials = 'current-user';
 export class AuthenticationService {
   currentUser: IUser;
   public loginSubject = new BehaviorSubject<boolean>(false);
+  public userName = new BehaviorSubject<string>('');
 
   login$ = this.loginSubject.asObservable();
+  userName$ = this.userName.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -37,6 +39,7 @@ export class AuthenticationService {
           );
           if (this.currentUser) {
             sessionStorage.setItem(credentials, JSON.stringify(this.currentUser));
+            this.userName.next(this.currentUser.userName);
             resolve(this.currentUser);
           } else {
             reject();

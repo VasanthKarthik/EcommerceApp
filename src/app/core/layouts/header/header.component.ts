@@ -37,6 +37,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authSubscription = this.authService.login$.subscribe((value) => {
       this.isLoggedIn = value;
     });
+    this.authSubscription = this.authService.userName$.subscribe((value) => {
+      this.userName = value;
+      this.userName = this.userName.length <=15 ? this.userName : this.userName.substr(0,12)+'...';
+    });
   }
 
   ngOnInit() {
@@ -46,10 +50,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.noOfCartItems = JSON.parse(sessionStorage.getItem('cart-length'))
       ? JSON.parse(sessionStorage.getItem('cart-length'))
       : 0;
-    this.userName = JSON.parse(sessionStorage.getItem('current-user'))
-    ? JSON.parse(sessionStorage.getItem('current-user')).userName
-    : '';
-    this.userName = this.userName.length <=15 ? this.userName : this.userName.substr(0,12)+'...';
   }
 
   showPopOver() {

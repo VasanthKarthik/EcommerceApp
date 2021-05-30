@@ -46,7 +46,6 @@ const routes: Routes = [
         path: 'food',
         component: FoodListComponent,
       },
-      { path: '**', component: ProductListComponent },
     ],
   },
   { path: 'shopping-cart', component: ShoppingCartComponent },
