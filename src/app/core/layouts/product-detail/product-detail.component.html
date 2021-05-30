@@ -16,7 +16,7 @@
     </div>
     <div class="col-sm-6">
       <p class="badge badge-success" *ngIf="isStockAvailable">Stock Available</p>
-      <p class="badge badge-secondary" *ngIf="!isStockAvailable">Out of Stock</p>
+      <p class="badge badge-danger" *ngIf="!isStockAvailable">Out of Stock</p>
       <h4 class="heading">{{ product.name }}</h4>
       <div class="text-left">
         <ngb-rating

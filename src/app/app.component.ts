@@ -1,6 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { event } from 'jquery';
 import { AuthenticationService } from './core/authentication/authentication.service';
 
 @Component({
@@ -19,7 +18,7 @@ export class AppComponent {
     this.authService.login$.subscribe((value) => {
       this.isLoggedIn = !value;
     });
-    let event = localStorage.getItem('event');
+    let event = sessionStorage.getItem('event');
     if (event === 'login') {
       this.isLoggedIn = true;
       this.route.navigateByUrl('/login');
@@ -31,18 +30,8 @@ export class AppComponent {
   isLogin(event: any) {
     if (event === 'login') {
       this.isLoggedIn = true;
-      localStorage.setItem('event', 'login');
+      sessionStorage.setItem('event', 'login');
       this.route.navigateByUrl('login');
-    }
-  }
-
-  @HostListener('window:beforeunload', ['$event'])
-  clearStorage() {
-    let event = localStorage.getItem('event');
-    if (event === 'login') {
-      return;
-    } else {
-      localStorage.clear();
     }
   }
 }

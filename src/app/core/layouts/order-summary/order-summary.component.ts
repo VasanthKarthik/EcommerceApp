@@ -21,12 +21,12 @@ export class OrderSummaryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.cartItems = JSON.parse(localStorage.getItem('cart-item'))
-      ? JSON.parse(localStorage.getItem('cart-item'))
+    this.cartItems = JSON.parse(sessionStorage.getItem('cart-item'))
+      ? JSON.parse(sessionStorage.getItem('cart-item'))
       : [];
 
-    this.cartTotal = JSON.parse(localStorage.getItem('cart-sub-total'))
-      ? JSON.parse(localStorage.getItem('cart-sub-total'))
+    this.cartTotal = JSON.parse(sessionStorage.getItem('cart-sub-total'))
+      ? JSON.parse(sessionStorage.getItem('cart-sub-total'))
       : 0;
 
     this.deliveryCharge = this.cartTotal < 99 ? 40 : 0;

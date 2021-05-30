@@ -42,18 +42,25 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.loginForm.valid) {
       this.authenticationService.login(this.loginForm.value);
-
-      setTimeout(() => this.afterLogin(), 500);
+      let toCheckOut = sessionStorage.getItem('check-out')
+        ? JSON.parse(sessionStorage.getItem('check-out'))
+        : false;
+      setTimeout(() => this.afterLogin(toCheckOut), 500);
     }
   }
 
-  afterLogin(): void {
+  afterLogin(toCheckOut: boolean): void {
     if (this.authenticationService.isLogin()) {
-      localStorage.removeItem('event');
-      localStorage.setItem('isLoggedIn', JSON.stringify(true));
+      sessionStorage.removeItem('event');
+      sessionStorage.setItem('isLoggedIn', JSON.stringify(true));
       this.authenticationService.loginSubject.next(true);
       this.notificationService.showSuccess('Login Successfully', 'Success');
-      this.route.navigateByUrl('');
+      if(toCheckOut){
+        sessionStorage.removeItem('check-out');
+        this.route.navigateByUrl('/checkout');
+      } else {
+        this.route.navigateByUrl('');
+      }
     } else {
       this.notificationService.showError(
         'Invalid User Name and Password',

@@ -29,14 +29,14 @@ export class ShoppingCartComponent implements OnInit {
     this.subscription = this.cartService.subTotal$.subscribe((value: any) => {
       this.subTotal = value;
     });
-    this.subTotal = localStorage.getItem('cart-sub-total')
-      ? JSON.parse(localStorage.getItem('cart-sub-total'))
+    this.subTotal = sessionStorage.getItem('cart-sub-total')
+      ? JSON.parse(sessionStorage.getItem('cart-sub-total'))
       : 0;
   }
 
   ngOnInit(): void {
-    this.cartItemList = JSON.parse(localStorage.getItem('cart-item'))
-      ? JSON.parse(localStorage.getItem('cart-item'))
+    this.cartItemList = JSON.parse(sessionStorage.getItem('cart-item'))
+      ? JSON.parse(sessionStorage.getItem('cart-item'))
       : [];
     if (this.cartItemList.length != 0) {
       this.calculateCartTotal();
@@ -60,7 +60,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   updateCart() {
-    localStorage.setItem('cart-item', JSON.stringify(this.cartItemList));
+    sessionStorage.setItem('cart-item', JSON.stringify(this.cartItemList));
     this.calculateCartTotal();
   }
 
@@ -88,7 +88,10 @@ export class ShoppingCartComponent implements OnInit {
     if (this.authenticationService.isLogin()) {
       this.route.navigateByUrl('/checkout');
     } else{
-      this.notificationService.showWarning('You need to login for Checkout!','Warning')
+      sessionStorage.setItem('event', 'login');
+      this.authenticationService.loginSubject.next(false);
+      sessionStorage.setItem('check-out',JSON.stringify(true));
+      this.route.navigateByUrl('/login');
     }
   }
 }

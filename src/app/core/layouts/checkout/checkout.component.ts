@@ -11,8 +11,8 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {}
 
   progressBar(event: any) {
-    let li = localStorage.getItem('li-active')
-      ? JSON.parse(localStorage.getItem('li-active'))
+    let li = sessionStorage.getItem('li-active')
+      ? JSON.parse(sessionStorage.getItem('li-active'))
       : 0;
     let ele = $('.progressbar').find('li')[li - 1];
     ele ? ele.setAttribute('class', 'active') : ele;

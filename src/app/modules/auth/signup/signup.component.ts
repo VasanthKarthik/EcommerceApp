@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
 
   createAccount() {
     if (this.singupForm.valid) {
-      localStorage.setItem('new-user', JSON.stringify(this.singupForm.value));
+      sessionStorage.setItem('new-user', JSON.stringify(this.singupForm.value));
       this.notificationService.showSuccess('User Created Successfully', 'Success');
       this.route.navigateByUrl('/login');
     }

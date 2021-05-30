@@ -3,7 +3,7 @@
     <div id="lang-header" class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-2 text">
-        <form novalidate>
+        <!-- <form novalidate>
           <select name="languages" id="languages">
             <option class="dropdown-item" value="english">English</option>
             <option class="dropdown-item" value="spanish">Spanish</option>
@@ -13,7 +13,8 @@
             <option class="dropdown-item" value="usd">USD</option>
             <option class="dropdown-item" value="inr">INR</option>
           </select>
-        </form>
+        </form> -->
+        <p class="text p-0 m-0"> English &nbsp;  | &nbsp; USD</p>
       </div>
       <div class="col-sm-8"></div>
     </div>
@@ -29,17 +30,17 @@
         &nbsp;
         <p class="text m-0 pr-3">
           Hello!<br />
-          <a href="" *ngIf="!isLoggedIn" (click)="goToLogin()">
+          <a href="" *ngIf="!isLoggedIn && !userName" (click)="goToLogin()">
             Login / Signup</a
           >
-          <span class="dropdown" *ngIf="isLoggedIn">
+          <span class="dropdown" *ngIf="isLoggedIn || userName">
             <a
               href=""
               id="dropdownMenuButton"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              >Your account</a
+              >{{ userName }}</a
             >
             <span class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item pr-2" href="" (click)="logout()"

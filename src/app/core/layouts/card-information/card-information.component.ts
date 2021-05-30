@@ -81,7 +81,7 @@ export class CardInformationComponent implements OnInit {
 
   saveCardInfo() {
     if (this.ccForm.valid) {
-      localStorage.setItem('li-active', JSON.stringify(3));
+      sessionStorage.setItem('li-active', JSON.stringify(3));
       this.activate.emit('li:second');
       this.notificationService.showSuccess(
         'Payment Completed Successfully!',

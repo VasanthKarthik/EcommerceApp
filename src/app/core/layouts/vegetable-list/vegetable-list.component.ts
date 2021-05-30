@@ -59,14 +59,14 @@ export class VegetableListComponent implements OnInit, OnDestroy {
   addToCart(product: IProduct) {
     this.cartService.addToCart(product, 1);
     this.notificationService.showSuccess(
-      'Product added to cart Successfully.',
+      product.name + ' added to cart Successfully.',
       'Success'
     );
   }
 
   goToPreview(product: IProduct) {
     this.route.navigate(['categories', 'products', product.id], {
-      state: product,
+      state: { product: product },
     });
   }
 

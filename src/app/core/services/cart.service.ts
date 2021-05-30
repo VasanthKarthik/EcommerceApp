@@ -21,9 +21,9 @@ export class CartService {
   addToCart(product: IProduct, quantity: number) {
     let addProduct: any;
     let length: any;
-    let isCartEmpty = localStorage.getItem(CART_ITEM) ? true : false;
+    let isCartEmpty = sessionStorage.getItem(CART_ITEM) ? true : false;
     if (isCartEmpty) {
-      addProduct = JSON.parse(localStorage.getItem(CART_ITEM));
+      addProduct = JSON.parse(sessionStorage.getItem(CART_ITEM));
       if (addProduct.find((i) => i.product.id === product.id)) {
         addProduct.find((i) => {
           if (i.product.id === product.id) {
@@ -44,10 +44,14 @@ export class CartService {
         },
       ];
     }
-    localStorage.setItem(CART_ITEM, JSON.stringify(addProduct));
-    length = JSON.parse(localStorage.getItem(CART_ITEM)).length;
-    localStorage.setItem(CART_LENGTH, JSON.stringify(length));
-    this.lengthSource.next(length);
+    let productLength = 0;
+    addProduct.forEach((i) => {
+      productLength += i.quantity;
+    });
+    sessionStorage.setItem(CART_ITEM, JSON.stringify(addProduct));
+    length = addProduct.length;
+    sessionStorage.setItem(CART_LENGTH, JSON.stringify(productLength));
+    this.lengthSource.next(productLength);
     this.calculateSubTotal(addProduct);
   }
 
@@ -56,24 +60,27 @@ export class CartService {
     items.forEach((i) => {
       sumOItems += i.quantity * i.product.discountPrice;
     });
-    localStorage.setItem(CART_SUB_TOTAL, JSON.stringify(sumOItems));
+    sessionStorage.setItem(CART_SUB_TOTAL, JSON.stringify(sumOItems));
     this.subTotal.next(sumOItems);
   }
 
   removeCartItem(cartItems: any, index: number) {
     cartItems.splice(index, 1);
-    localStorage.setItem(CART_ITEM, JSON.stringify(cartItems));
-    let length = cartItems.length;
-    localStorage.setItem(CART_LENGTH, length);
+    sessionStorage.setItem(CART_ITEM, JSON.stringify(cartItems));
+    let length = 0;
+    cartItems.forEach((i) => {
+      length += i.quantity;
+    });
+    sessionStorage.setItem(CART_LENGTH, length + '');
     this.lengthSource.next(length);
     this.calculateSubTotal(cartItems);
     return cartItems;
   }
 
   removeAll() {
-    localStorage.removeItem(CART_ITEM);
-    localStorage.removeItem(CART_LENGTH);
-    localStorage.removeItem(CART_SUB_TOTAL);
+    sessionStorage.removeItem(CART_ITEM);
+    sessionStorage.removeItem(CART_LENGTH);
+    sessionStorage.removeItem(CART_SUB_TOTAL);
     this.lengthSource.next(0);
     this.subTotal.next(0);
 

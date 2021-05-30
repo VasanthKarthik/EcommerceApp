@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   noOfCartItems: number = 0;
   authSubscription: Subscription;
   cartSubscription: Subscription;
+  userName: any;
 
   constructor(
     private route: Router,
@@ -42,9 +43,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.cartSubscription = this.cartService.cartLength$.subscribe((value) => {
       this.noOfCartItems = value;
     });
-    this.noOfCartItems = JSON.parse(localStorage.getItem('cart-length'))
-      ? JSON.parse(localStorage.getItem('cart-length'))
+    this.noOfCartItems = JSON.parse(sessionStorage.getItem('cart-length'))
+      ? JSON.parse(sessionStorage.getItem('cart-length'))
       : 0;
+    this.userName = JSON.parse(sessionStorage.getItem('current-user'))
+    ? JSON.parse(sessionStorage.getItem('current-user')).userName
+    : '';
+    this.userName = this.userName.length <=15 ? this.userName : this.userName.substr(0,12)+'...';
   }
 
   showPopOver() {

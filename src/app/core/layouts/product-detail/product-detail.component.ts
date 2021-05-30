@@ -5,6 +5,7 @@ declare var $: any; // ADD THIS
 import 'jquery';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
+import { NotificationService } from '../../services/notificaion.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,7 +20,11 @@ export class ProductDetailComponent implements OnInit {
   quantity: FormControl;
   isStockAvailable: boolean;
 
-  constructor(private route: Router, private cartService: CartService) {
+  constructor(
+    private route: Router,
+    private cartService: CartService,
+    private notificationService: NotificationService
+  ) {
     this.quantity = new FormControl('1');
     this.quantityForm = new FormGroup({
       quantity: this.quantity,
@@ -27,7 +32,10 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.product = history.state;
+    this.product = history.state['product'];
+    if (!this.product) {
+      this.route.navigateByUrl('/categories');
+    }
     this.isStockAvailable = this.product.stockAvailable != 0;
   }
 
@@ -42,6 +50,13 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToCart(product: IProduct) {
-    this.cartService.addToCart(product, this.quantityForm.value.quantity);
+    this.cartService.addToCart(
+      product,
+      Number(this.quantityForm.value.quantity)
+    );
+    this.notificationService.showSuccess(
+      product.name + ' added to cart Successfully.',
+      'Success'
+    );
   }
 }

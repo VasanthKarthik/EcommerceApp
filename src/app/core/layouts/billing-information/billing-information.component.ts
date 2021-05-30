@@ -65,11 +65,11 @@ export class BillingInformationComponent implements OnInit {
 
   saveBillingInfo() {
     if (this.billingForm.valid) {
-      localStorage.setItem(
+      sessionStorage.setItem(
         'billing-Info',
         JSON.stringify(this.billingForm.value)
       );
-      localStorage.setItem('li-active', JSON.stringify(2));
+      sessionStorage.setItem('li-active', JSON.stringify(2));
       this.activate.emit('li:second');
       this.route.navigateByUrl('checkout/card-information');
     }

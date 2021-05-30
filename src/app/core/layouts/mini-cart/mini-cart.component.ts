@@ -27,11 +27,11 @@ export class MiniCartComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.cartItems = JSON.parse(localStorage.getItem('cart-item'))
-      ? JSON.parse(localStorage.getItem('cart-item'))
+    this.cartItems = JSON.parse(sessionStorage.getItem('cart-item'))
+      ? JSON.parse(sessionStorage.getItem('cart-item'))
       : [];
-    this.subTotal = JSON.parse(localStorage.getItem('cart-sub-total'))
-      ? JSON.parse(localStorage.getItem('cart-sub-total'))
+    this.subTotal = JSON.parse(sessionStorage.getItem('cart-sub-total'))
+      ? JSON.parse(sessionStorage.getItem('cart-sub-total'))
       : 0;
   }
 
@@ -43,7 +43,10 @@ export class MiniCartComponent implements OnInit, OnDestroy {
     if (this.authenticationService.isLogin()) {
       this.route.navigateByUrl('/checkout');
     } else {
-      this.notificationService.showWarning('You need to login for Checkout!', 'Warning');
+      sessionStorage.setItem('event', 'login');
+      this.authenticationService.loginSubject.next(false);
+      sessionStorage.setItem('check-out',JSON.stringify(true));
+      this.route.navigateByUrl('/login');
     }
   }
 

@@ -23,8 +23,8 @@ export class AuthenticationService {
         .get(url)
         .toPromise()
         .then((response: IUser[]) => {
-          let newUser = localStorage.getItem('new-user')
-            ? JSON.parse(localStorage.getItem('new-user'))
+          let newUser = sessionStorage.getItem('new-user')
+            ? JSON.parse(sessionStorage.getItem('new-user'))
             : '';
           if (newUser) {
             response.push(newUser);
@@ -36,7 +36,7 @@ export class AuthenticationService {
               item.password === userData.password
           );
           if (this.currentUser) {
-            localStorage.setItem(credentials, JSON.stringify(this.currentUser));
+            sessionStorage.setItem(credentials, JSON.stringify(this.currentUser));
             resolve(this.currentUser);
           } else {
             reject();
@@ -49,19 +49,19 @@ export class AuthenticationService {
   }
 
   isLogin(): boolean {
-    if (localStorage.getItem(credentials)) {
+    if (sessionStorage.getItem(credentials)) {
       return true;
     }
     return false;
   }
 
   logout(): boolean {
-    localStorage.removeItem(credentials);
+    sessionStorage.removeItem(credentials);
     return true;
   }
 
   getUser() {
-    let user = localStorage.getItem(credentials);
+    let user = sessionStorage.getItem(credentials);
     return JSON.parse(user);
   }
 }
